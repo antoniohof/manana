@@ -40,7 +40,6 @@ def play_audio(AUDIO_FILE):
     wf2 = wave.open(AUDIO_FILE , 'rb')
 
     #Introduce  playback delay
-    # time.sleep(AUDIO_DELAY)
 
 
     #Define playback audio stream
@@ -67,9 +66,8 @@ if __name__=='__main__':
     FORMAT = pyaudio.paInt16
     CHANNELS = 2               #stereo
     RATE = 44100
-    RECORD_SECONDS = 10         #record chunks of 5 sec
-    TOTAL_RECORD_NUMBER = 5    # total chunks to record and play
-    AUDIO_DELAY = 5.0          #playback delay in seconds
+    RECORD_SECONDS = 30         #record chunks of 5 sec
+    TOTAL_RECORD_NUMBER = 50    # total chunks to record and play
 
     x = 0
 
