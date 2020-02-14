@@ -62,19 +62,21 @@ def play_audio(AUDIO_FILE):
 
 if __name__=='__main__':
 
-    CHUNK = 2048
+    CHUNK = 1024
     FORMAT = pyaudio.paInt16
     CHANNELS = 2               #stereo
     RATE = 44100
-    RECORD_SECONDS = 6         #record chunks of 5 sec
-    TOTAL_RECORD_NUMBER = 50    # total chunks to record and play
+    RECORD_SECONDS = 15         #record chunks of 5 sec
+    TOTAL_RECORD_NUMBER = 6000    # total chunks to record and play
 
     x = 0
 
     while x < TOTAL_RECORD_NUMBER:
 
+        audioNumber = x % 10
+
         #define audio file clip
-        AUDIO_FILE = "recordings/audio{0}.wav".format(x)
+        AUDIO_FILE = "recordings/audio{0}.wav".format(audioNumber)
 
         #initialize pyaudio
         p = pyaudio.PyAudio()        
@@ -93,8 +95,8 @@ if __name__=='__main__':
         procs.append(Process(target=record_audio, args=(AUDIO_FILE,)))
 
                 #define audio file clip
-        if x > 0:
-            AUDIO_FILE_TOPLAY = "recordings/audio{0}.wav".format(x - 1)
+        if audioNumber > 0:
+            AUDIO_FILE_TOPLAY = "recordings/audio{0}.wav".format(audioNumber - 1)
             procs.append(Process(target=play_audio, args=(AUDIO_FILE_TOPLAY,)))
 
         #     t1 = Process(target=test1, args=(q,))
